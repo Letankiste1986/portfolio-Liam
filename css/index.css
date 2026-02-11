@@ -1,0 +1,162 @@
+:root {
+    --bg: #050018;
+    --pink: #ff00c3;
+    --purple: #7b2cff;
+    --cyan: #00fff9;
+    --grid-line: rgba(0, 255, 249, 0.35);
+    --text: #f5f5ff;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: var(--text);
+    background: radial-gradient(circle at top, #351b8a 0, #050018 55%);
+    min-height: 100vh;
+}
+
+#navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: linear-gradient(90deg, rgba(255,0,195,0.2), rgba(0,255,249,0.1));
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    z-index: 10;
+}
+
+#navbar ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 12px 24px;
+    gap: 24px;
+}
+
+#navbar a {
+    color: var(--text);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.8rem;
+    position: relative;
+}
+
+/* effet néon sur les liens */
+#navbar a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--pink), var(--cyan));
+    transition: width 0.3s ease;
+}
+
+#navbar a:hover::after {
+    width: 100%;
+}
+
+#navbar a:hover {
+    text-shadow: 0 0 6px var(--cyan), 0 0 14px var(--pink);
+}
+
+main {
+    padding-top: 80px; /* pour ne pas être sous la nav */
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+#apropos h1 {
+    font-size: 3rem;
+    text-align: center;
+    margin-top: 80px;
+    background: linear-gradient(90deg, var(--pink), var(--cyan));
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 18px rgba(255, 0, 195, 0.6);
+}
+
+section {
+    margin: 40px 20px 80px;
+    padding: 24px 28px;
+    background: rgba(5, 0, 24, 0.8);
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow:
+        0 0 15px rgba(0,255,249,0.25),
+        0 0 40px rgba(255,0,195,0.15);
+}
+
+footer {
+    position: relative;
+    overflow: hidden;
+    padding: 40px 20px 20px;
+    text-align: center;
+    background: radial-gradient(circle at top, rgba(0,255,249,0.15), transparent 55%);
+}
+
+/* lignes type grille au sol */
+footer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+        linear-gradient(to top, var(--grid-line) 1px, transparent 1px);
+    background-size: 80px 80px;
+    opacity: 0.4;
+    transform-origin: top;
+    transform: perspective(600px) rotateX(70deg) translateY(40px);
+    pointer-events: none;
+}
+
+footer h3, footer p, footer ul {
+    position: relative;
+    z-index: 1;
+}
+
+section {
+    margin: 40px 20px 80px;
+    padding: 24px 28px;
+    background: rgba(5, 0, 24, 0.8);
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow:
+        0 0 15px rgba(0,255,249,0.25),
+        0 0 40px rgba(255,0,195,0.15);
+}
+
+.pulse-neon {
+    animation: pulse 2.5s infinite alternate;
+}
+
+@keyframes pulse {
+    from { text-shadow: 0 0 4px var(--cyan); }
+    to   { text-shadow: 0 0 18px var(--cyan), 0 0 32px var(--pink); }
+}
+
+
+ul {
+    list-style-type: none;
+}
+
+
+footer a, #navbar a {
+    color: white;
+    text-decoration: none;
+}
+
+
+footer a:hover, #navbar a:hover {
+    color: var(--cyan); 
+    text-shadow: 0 0 8px var(--cyan);
+}
+
+
+footer a:active, #navbar a:active {
+    color: var(--pink); 
+    text-shadow: 0 0 12px var(--pink);
+}
